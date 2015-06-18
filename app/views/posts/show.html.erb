@@ -18,6 +18,12 @@
     </div>
   <% end %>
 
+  <%= form_for [@post, @comment], class: 'form-horizontal' do |f| %>
+  <%= f.hidden_field :user_id %>
+    <%= f.text_area :body, class: 'comment-field' %><br/>
+    <%= f.submit 'add comment', class: 'simple-submit' %>
+  <% end %>
+
   <%= link_to 'Edit', edit_post_path(@post) %> |
-  <%= link_to 'Back', posts_path %>
+  <%= link_to 'Back', root_path %>
 </section>

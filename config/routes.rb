@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :user, only: [:new, :edit]
-  post '/users' => 'users#create', as: 'create_user'
+  resources :users, only: [:new, :edit, :create]
   delete '/users' => 'users#destroy', as: 'delete_user_account'
   resources :posts do
     resources :comments
