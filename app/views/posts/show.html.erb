@@ -2,7 +2,7 @@
   <p id="notice"><%= notice %></p>
 
   <div class="title-wrapper">
-    <a href="/posts/<%= @post.id %>"><p class="title"> <%=@post.title %></p></a>
+    <a href="/posts/<%= @post.id %>"><p class="title"><b>Title:</b> <%=@post.title %></p></a>
     <% if @post.url %>
       <p class="subhead comhead"> (<%=@post.url %>)</p>
     <% end %>
@@ -32,15 +32,36 @@
       <div class="info-wrapper">
         <p class="subtext">
           <%= comment.user.username %> <%= time_ago_in_words(comment.created_at) %>
+
         </p>
       </div>
       <div class="title-wrapper">
         <p class="title"><%= comment.body %></p>
       </div>
+      <%= link_to 'reply', '#', class: 'comhead open-nested-form', style: 'text-decoration: underline; color: black;' %>
+      <div class="hidden-form hidden">
+        <%= form_for @nested_comment, class: 'form-horizontal' do |f| %>
+          <%= f.hidden_field :comment_id, value: comment.id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.text_field :body, class: 'comment-field' %><br/>
+          <%= f.submit 'add reply', class: 'simple-submit' %>
+        <% end %>
+      </div>
+
+      <% if comment.comments.count >= 1 %>
+        <div class="info-wrapper nested">
+          <p class="subtext">
+            <%= comment.user.username %> <%= time_ago_in_words(comment.created_at) %>
+          </p>
+        </div>
+        <div class="title-wrapper nested">
+          <p class="title"><%= comment.body %></p>
+        </div>
+      <% end %>
 
     <% end %>
   <% end %>
-
+  <br/>
 
 
   <%= link_to 'Edit', edit_post_path(@post) %> |

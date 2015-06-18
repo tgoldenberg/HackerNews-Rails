@@ -1,0 +1,6 @@
+<%= form_for @nested_comment, class: 'form-horizontal' do |f| %>
+<%= f.hidden_field :comment_id, value: comment.id%>
+<%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.text_area :body, class: 'comment-field' %><br/>
+  <%= f.submit 'add comment', class: 'simple-submit' %>
+<% end %>

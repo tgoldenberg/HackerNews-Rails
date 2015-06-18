@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comment = @post.comments.build
+    @nested_comment = Comment.new
     @comments = @post.comments.all.order("created_at DESC")
   end
 
