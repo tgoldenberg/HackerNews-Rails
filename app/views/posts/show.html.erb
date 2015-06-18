@@ -18,12 +18,33 @@
     </div>
   <% end %>
 
+<% if current_user %>
   <%= form_for [@post, @comment], class: 'form-horizontal' do |f| %>
-  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.text_area :body, class: 'comment-field' %><br/>
     <%= f.submit 'add comment', class: 'simple-submit' %>
+  <% end %><br/><br/>
+<% end %>
+
+  <% @comments.each_with_index do |comment, i| %>
+    <% if comment.id %>
+      <div class="info-wrapper">
+        <p class="subtext">
+          <%= comment.user.username %> <%= time_ago_in_words(comment.created_at) %>
+        </p>
+      </div>
+      <div class="title-wrapper">
+        <p class="title"><%= comment.body %></p>
+      </div>
+
+    <% end %>
   <% end %>
+
+
 
   <%= link_to 'Edit', edit_post_path(@post) %> |
   <%= link_to 'Back', root_path %>
+
 </section>
+
