@@ -7,7 +7,7 @@
   border-radius: 0;
   margin-bottom: 0;
   display: inline-block;
-  width: 90%;
+  width: 100%;
 }
 .content {
   background: $grey-background;
@@ -15,6 +15,7 @@
   margin-top: -1.4em;
   height: 100%;
   min-height: 20em;
+  padding-left: 1em;
 }
 .logo {
   color: white;
@@ -40,4 +41,9 @@ a.title-link {
   border-right: 1px solid black;
   padding-left: 3px;
   padding-right: 5px;
+}
+.title-wrapper {
+  display: flex;
+  margin: auto;
+  margin-top: 8px;
 }

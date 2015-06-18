@@ -14,6 +14,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'faker'
 gem 'bcrypt'
+gem 'will_paginate', '~> 3.0.6'
 
 
 group :development, :test do
