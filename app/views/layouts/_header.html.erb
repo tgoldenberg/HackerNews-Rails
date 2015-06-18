@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="logo">Y</div>
+  <div class="nav-links">
+    <%= link_to 'catter News', root_path, class: 'title-link' %>
+    <%= link_to 'new', root_path, class: 'nav-link' %>
+    <%= link_to 'comments', root_path, class: 'nav-link' %>
+    <%= link_to 'show', root_path, class: 'nav-link' %>
+    <%= link_to 'ask', root_path, class: 'nav-link' %>
+    <%= link_to 'jobs', root_path, class: 'nav-link' %>
+    <%= link_to 'submit', root_path, class: 'nav-link' %>
+    <% if current_user %>
+      <%= link_to 'login', login_path, class: 'nav-link' %>
+      <%= link_to 'signup' new_user_path, class: 'nav-link' %>
+    <%= else %>
+      <%= link_to 'logout', logout_path, class: 'nav-link' %>
+    <% end %>
+  </div>
+
+
+
+</nav>
