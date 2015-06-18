@@ -12,8 +12,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bourbon'
 gem 'neat'
-
-
+gem 'faker'
+gem 'bcrypt'
 
 
 group :development, :test do
