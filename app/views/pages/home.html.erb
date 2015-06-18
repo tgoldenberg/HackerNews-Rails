@@ -1,17 +1,16 @@
-<section class="content">
-  <br /><br/>
+<section class="content"><br/>
   <% @posts.each_with_index do |post, idx| %>
     <div class="post-wrapper">
       <div class="title-wrapper">
-        <p class="title"> <%= idx + 1 %>. <%= post.title %></p>
+        <a href="/posts/<%= post.id %>"><p class="title"> <%= idx + 1 %>. <%= post.title %></p></a>
         <% if post.url %>
-          <p class="subhead comhead"> (<%= post.url %>)</p>      
+          <p class="subhead comhead"> (<%= post.url %>)</p>
         <% end %>
       </div>
       <div class="info-wrapper">
         <p class="subtext">
-          10 points by <%= post.user.username %> <%= time_ago_in_words(post.created_at) %> |
-          <%= post.comments.size %> comments</p>
+          10 points by <a href="#"><%= post.user.username %></a> <%= time_ago_in_words(post.created_at) %> |
+          <a href="#"><%= post.comments.size %> comments</p></a>
       </div>
     </div>
   <% end %>

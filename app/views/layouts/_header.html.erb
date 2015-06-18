@@ -8,7 +8,12 @@
     <%= link_to 'ask', root_path, class: 'nav-link' %>
     <%= link_to 'jobs', root_path, class: 'nav-link' %>
     <%= link_to 'submit', root_path, class: 'nav-link' %>
-    <%= link_to 'login', root_path, class: 'nav-link' %>
+    <% if current_user %>
+      <%= link_to 'login', login_path, class: 'nav-link' %>
+      <%= link_to 'signup' new_user_path, class: 'nav-link' %>
+    <%= else %>
+      <%= link_to 'logout', logout_path, class: 'nav-link' %>
+    <% end %>
   </div>
 
 
