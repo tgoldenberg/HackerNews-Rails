@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create', as: 'create_session'
   delete '/logout' => 'sessions#destroy', as: 'logout'
   root 'pages#home'
+  get '/posts/:id/upvote' => 'posts#upvote', as: 'post_upvote'
 
 end

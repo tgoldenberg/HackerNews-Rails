@@ -1,0 +1,13 @@
+I"ü(function() {
+  $(function() {
+    return $('.post-upvote').on('click', function(e) {
+      var target;
+      e.preventDefault();
+      console.log("CLICKED");
+      target = $(e.target);
+      return console.log(target);
+    });
+  });
+
+}).call(this);
+:ET

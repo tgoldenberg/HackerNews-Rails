@@ -2,14 +2,20 @@
   <% @posts.each_with_index do |post, idx| %>
     <div class="post-wrapper">
       <div class="title-wrapper">
-        <a href="/posts/<%= post.id %>"><p class="title"> <%= idx + 1 %>. <%= post.title %></p></a>
+        <%= idx + 1 %>.
+        <a href="#" data-id="<%= post.id %>" class="post-upvote"><span class="glyphicon glyphicon-triangle-top"></span></a>
+        <a href="/posts/<%= post.id %>">
+          <p class="title">
+            <%= post.title %>
+          </p>
+        </a>
         <% if post.url %>
           <p class="subhead comhead"> (<%= post.url %>)</p>
         <% end %>
       </div>
       <div class="info-wrapper">
         <p class="subtext">
-          10 points by <a href="#"><%= post.user.username %></a> <%= time_ago_in_words(post.created_at) %> |
+          <span class="upvote-holder"><%= post.votes_for.size %></span> points by <a href="#"><%= post.user.username %></a> <%= time_ago_in_words(post.created_at) %> |
           <a href="#"><%= post.comments.size %> comments</p></a>
       </div>
     </div>

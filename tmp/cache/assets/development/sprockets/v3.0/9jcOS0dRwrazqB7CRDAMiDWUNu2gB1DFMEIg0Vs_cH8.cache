@@ -1,0 +1,10 @@
+I"³(function() {
+  $(function() {
+    return $('.post-upvote').on('click', function(e) {
+      e.preventDefault();
+      return console.log("CLICKED");
+    });
+  });
+
+}).call(this);
+:ET

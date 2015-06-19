@@ -2,6 +2,7 @@
   <p id="notice"><%= notice %></p>
 
   <div class="title-wrapper">
+    <a href="#" data-id="<%= @post.id %>" class="post-upvote"><span class="glyphicon glyphicon-triangle-top"></span></a>
     <a href="/posts/<%= @post.id %>"><p class="title"><b>Title:</b> <%=@post.title %></p></a>
     <% if @post.url %>
       <p class="subhead comhead"> (<%=@post.url %>)</p>
@@ -9,7 +10,7 @@
   </div>
   <div class="info-wrapper">
     <p class="subtext">
-      10 points by <a href="#"><%= @post.user.username %></a> <%= time_ago_in_words(@post.created_at) %> |
+      <span class="upvote-holder"><%= @post.votes_for.size %></span> points by <a href="#"><%= @post.user.username %></a> <%= time_ago_in_words(@post.created_at) %> |
       <a href="#"><%= @post.comments.size %> comments</p></a>
   </div>
   <% if @post.body %>
@@ -24,7 +25,7 @@
   <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.text_area :body, class: 'comment-field' %><br/>
     <%= f.submit 'add comment', class: 'simple-submit' %>
-  <% end %><br/><br/>
+  <% end %>
 <% end %>
 
   <% @comments.each_with_index do |comment, i| %>
@@ -64,7 +65,6 @@
     <% end %>
   <% end %>
   <br/>
-
 
   <%= link_to 'Edit', edit_post_path(@post) %> |
   <%= link_to 'Back', root_path %>
