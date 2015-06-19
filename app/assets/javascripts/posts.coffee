@@ -3,6 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+  $('#new_comment').on 'submit', (e) ->
+    e.preventDefault
+    target = $(e.target)
+    console.log target
+
   $('.open-nested-form').on 'click', (e) ->
     e.preventDefault
     target = $(e.target)
@@ -12,3 +17,4 @@ $ ->
     else
       target.next().addClass('hidden')
       false
+

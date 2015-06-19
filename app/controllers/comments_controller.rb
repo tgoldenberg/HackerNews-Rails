@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :js, :json
 
   # GET /comments
   # GET /comments.json
@@ -26,15 +27,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to Post.find(params[:post_id]), notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+    @comment.save
   end
 
   # PATCH/PUT /comments/1
