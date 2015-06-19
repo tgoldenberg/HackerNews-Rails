@@ -1,0 +1,45 @@
+I"0(function() {
+  $(function() {
+    $('.new_comment').on('submit', function(e) {
+      var target;
+      e.preventDefault;
+      target = $(e.target);
+      $.ajax({
+        url: '/comments',
+        method: 'post',
+        dataType: 'json',
+        data: target.serialize()
+      }).done(function(data) {
+        var content, unNestedContent;
+        content = "<div class='title-wrapper nested'><p class='title'>" + data.body + "</p></div>";
+        unNestedContent = "<div class='title-wrapper'><p class='title'>" + data.body + "</p></div>";
+        console.log(target);
+        if (target.parent().hasClass("content")) {
+          target.after(unNestedContent);
+        } else {
+          target.parent().after(content);
+        }
+        target.find('.comment-field').val("");
+        $('.hidden-form').addClass('hidden');
+        return console.log("DONE");
+      }).fail(function(error) {
+        return console.log(error);
+      });
+      return false;
+    });
+    return $('.open-nested-form').on('click', function(e) {
+      var target;
+      e.preventDefault;
+      target = $(e.target);
+      if (target.next().hasClass('hidden')) {
+        target.next().removeClass('hidden');
+        return false;
+      } else {
+        target.next().addClass('hidden');
+        return false;
+      }
+    });
+  });
+
+}).call(this);
+:ET
