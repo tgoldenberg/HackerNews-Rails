@@ -1,0 +1,25 @@
+I"5(function() {
+  $(function() {
+    $('#new_comment').on('submit', function(e) {
+      var target;
+      e.preventDefault;
+      target = $(e.target);
+      console.log(target);
+      return false;
+    });
+    return $('.open-nested-form').on('click', function(e) {
+      var target;
+      e.preventDefault;
+      target = $(e.target);
+      if (target.next().hasClass('hidden')) {
+        target.next().removeClass('hidden');
+        return false;
+      } else {
+        target.next().addClass('hidden');
+        return false;
+      }
+    });
+  });
+
+}).call(this);
+:ET

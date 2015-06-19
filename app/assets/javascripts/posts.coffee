@@ -3,10 +3,25 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#new_comment').on 'submit', (e) ->
+  $('.new_comment').on 'submit', (e) ->
     e.preventDefault
     target = $(e.target)
-    console.log target
+    console.log(target)
+    $.ajax({
+      url: '/comments',
+      method: 'post',
+      dataType: 'json',
+      data: target.serialize()
+      })
+      .done (data) ->
+        content = "<div class='title-wrapper nested'><p class='title'>" + data.body + "</p></div>"
+        target.parent().after(content)
+        target.find('.comment-field').val("")
+        $('.hidden-form').addClass('hidden')
+        console.log "DONE"
+      .fail (error) ->
+        console.log(error)
+    false
 
   $('.open-nested-form').on 'click', (e) ->
     e.preventDefault

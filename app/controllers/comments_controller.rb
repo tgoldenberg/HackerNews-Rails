@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js, :json
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
   # GET /comments.json
@@ -26,8 +26,8 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-
     @comment.save
+    render json: @comment.to_json
   end
 
   # PATCH/PUT /comments/1
